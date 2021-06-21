@@ -7,12 +7,12 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 {
     [SerializeField] Canvas canvas;
 
-    RectTransform myTransform;
-    CanvasGroup myCanvasGroup;
+    Transform myTransform;
+    
     
     void Awake() {
-        myTransform = this.GetComponent<RectTransform>();
-        myCanvasGroup = this.GetComponent<CanvasGroup>();
+        myTransform = this.GetComponent<Transform>();
+        
     }
 
     public void OnPointerDown(PointerEventData eventData ) {
@@ -21,17 +21,16 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnBeginDrag( PointerEventData eventData ) {
         Debug.Log("I am begindrag");
-        myCanvasGroup.alpha = .5f;
-        myCanvasGroup.blocksRaycasts = false;
+        
+        
     }
     public void OnDrag( PointerEventData eventData ) {
         Debug.Log("I am drag");
-        myTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        
     }
     public void OnEndDrag( PointerEventData eventData ) {
         Debug.Log("I am enddrag");
-        myCanvasGroup.alpha = 1f;
-        myCanvasGroup.blocksRaycasts = true;
+        
     }
     
 }
