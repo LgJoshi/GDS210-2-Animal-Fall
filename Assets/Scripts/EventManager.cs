@@ -11,12 +11,11 @@ public class EventManager : MonoBehaviour
         PhaseChanged();
     }
 
-    /*
+    
     public delegate void GameOver();
-    public static event GameEnd GameEnded;
+    public static event GameOver GameEnded;
 
     static public void GameEndEvent(){
         GameEnded();
     }
-    */
 }

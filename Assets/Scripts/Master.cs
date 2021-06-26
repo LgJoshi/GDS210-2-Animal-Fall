@@ -21,13 +21,12 @@ public class Master : MonoBehaviour
     }
 
     void Update(){
-        if(Input.GetKeyDown("a")){
-            ChangePhaseDebug();
+        if(Input.GetKeyDown("q")){
+            EventManager.PhaseChangeEvent();
         }
-    }
-
-    void ChangePhaseDebug(){
-        EventManager.PhaseChangeEvent();
+        if(Input.GetKeyDown("w")){
+            EventManager.GameEndEvent();
+        }
     }
 
     void ChangeCamera(){

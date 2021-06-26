@@ -7,12 +7,13 @@ public class ClickAndDrag : MonoBehaviour
     // Start is called before the first frame update
 bool canMove;
 bool dragging;
+bool isStartPhase = true;
 
-Collider2D collider;
+Collider2D col;
 
     void Start()
     {
-        collider = GetComponent<Collider2D>();
+        col = GetComponent<Collider2D>();
         canMove = false;
         dragging = false;
     }
@@ -20,33 +21,45 @@ Collider2D collider;
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (isStartPhase){
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
-      if(Input.GetMouseButtonDown(0))
-      {
-            if(collider == Physics2D.OverlapPoint(mousePos))
+            if(Input.GetMouseButtonDown(0))
             {
-                canMove = true;
-            } else
+                if(col == Physics2D.OverlapPoint(mousePos))
+                {
+                    canMove = true;
+                } else
+                {
+                    canMove = false;
+                }
+
+                if(canMove)
+                {
+                    dragging = true;
+                }
+            }
+            if(dragging)
+            {
+                this.transform.position = mousePos;
+            }
+
+            if(Input.GetMouseButtonUp(0))
             {
                 canMove = false;
-            }
-
-            if(canMove)
-            {
-                dragging = true;
+                dragging = false;
             }
         }
-        if(dragging)
-        {
-            this.transform.position = mousePos;
-        }
+    }
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            canMove = false;
-            dragging = false;
-        }
+    void OnEnable() {
+        EventManager.PhaseChanged += ChangePhase;
+    }
+    void OnDisable() {
+        EventManager.PhaseChanged -= ChangePhase;
+    }
+
+    void ChangePhase(){
+        isStartPhase=false;
     }
 }
