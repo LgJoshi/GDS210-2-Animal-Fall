@@ -8,6 +8,7 @@ public class AnimalController : MonoBehaviour
     [SerializeField] Vector3 vel;
     Animator anim;
     [SerializeField] GameObject meat;
+	[SerializeField] float splatThreshold;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,6 @@ public class AnimalController : MonoBehaviour
         EventManager.GameEnded -= Splatter;
         EventManager.GameWon -= FreezeAnimal;
     }
-
     void OnTriggerEnter2D(Collider2D collide)
     {
         Debug.Log("collided with "+collide.gameObject.name);
@@ -37,17 +37,19 @@ public class AnimalController : MonoBehaviour
         if (collide.gameObject.name == "Fire"){
             EventManager.GameEndEvent();
         }
-        if (collide.gameObject.name == "Goal"){
-            EventManager.GameWinEvent();
-        }
-        if ((Mathf.Abs(vel.x)+(Mathf.Abs(vel.y))/2 > 2.5f )) {
-            EventManager.GameEndEvent();
-        } else if (collide.gameObject.name == "Goal"){
-            EventManager.GameWinEvent();
-        }
+
         anim.SetBool("IsColliding", true);
     }
-
+	void OnCollisionEnter2D(Collision2D colis)
+	{
+		if (colis.relativeVelocity.magnitude > splatThreshold ) {
+            EventManager.GameEndEvent();
+        } else
+		if (colis.gameObject.name == "Goal")
+		{
+            EventManager.GameWinEvent();
+        }
+	}
     void OnTriggerExit2D(Collider2D collide){
         anim.SetBool("IsColliding", false);
     }

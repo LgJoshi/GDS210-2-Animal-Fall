@@ -30,6 +30,9 @@ public class Timer : MonoBehaviour
 		if(timeToDisplay < 0)
 		{
 			timeToDisplay = 0;
+			//go to animal fall
+			//talk to event manager
+			EventManager.PhaseChangeEvent();
 		}
 		
 		float minutes = Mathf.FloorToInt(timeToDisplay / 60);
