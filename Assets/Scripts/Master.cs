@@ -27,6 +27,9 @@ public class Master : MonoBehaviour
         if(Input.GetKeyDown("w")){
             EventManager.GameEndEvent();
         }
+        if(Input.GetKeyDown("e")){
+            EventManager.GameWinEvent();
+        }
     }
 
     void ChangeCamera(){

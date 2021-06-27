@@ -9,11 +9,13 @@ public class FireFall : MonoBehaviour
     void OnEnable(){
         EventManager.PhaseChanged +=StartFall;
         EventManager.GameEnded += EndFall;
+        EventManager.GameWon += EndFall;
     }
 
     void OnDisable(){
         EventManager.PhaseChanged-=StartFall;
         EventManager.GameEnded -= EndFall;
+        EventManager.GameWon -= EndFall;
     }
 
     // Update is called once per frame

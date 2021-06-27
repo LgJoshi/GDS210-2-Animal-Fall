@@ -50,6 +50,12 @@ Collider2D col;
                 dragging = false;
             }
         }
+
+        if (transform.position.x > 2.8f){
+            if (Input.GetAxis("Mouse ScrollWheel") !=0 ) {
+            transform.position += new Vector3(0, Input.GetAxis("Mouse ScrollWheel")*5, 0);
+            }
+        }
     }
 
     void OnEnable() {
