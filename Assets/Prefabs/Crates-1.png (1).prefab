@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8277257048884840141}
   - component: {fileID: 1185639307020079912}
   - component: {fileID: 2774003186658461763}
+  - component: {fileID: 2419189437468325675}
   m_Layer: 0
   m_Name: Crates-1.png (1)
   m_TagString: Untagged
@@ -143,5 +144,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ef4b00f1addc04fb2bc9f7da2f3557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2419189437468325675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5627366801952396865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9c028e05029ef48b6628216b136f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
